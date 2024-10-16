@@ -5,18 +5,13 @@ import bcrypt from 'bcryptjs';
 import { sendEmail } from '@/utils/mailer';
 
 
-connect().then(() => console.log("Database connected successfully")).catch(err => console.error("Database connection error:", err));
+connect()
 
 export async function POST(request) {
     try {
-     
-        
-        // Parse request body
-        const reqBody = await request.json();
-      
-
-        const { username, email, password } = reqBody;
-        
+      const reqBody = await request.json();
+       const { username, email, password } = reqBody;
+       
         if (!username || !email || !password) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
